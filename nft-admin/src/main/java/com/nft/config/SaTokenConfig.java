@@ -9,14 +9,12 @@ import cn.dev33.satoken.interceptor.SaRouteInterceptor;
 import cn.dev33.satoken.router.SaRouter;
 import cn.dev33.satoken.router.SaRouterStaff;
 import cn.dev33.satoken.stp.StpUtil;
-import com.nft.config.RedisV2Util;
 
 @Configuration
 public class SaTokenConfig implements WebMvcConfigurer {
 
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
-		RedisV2Util.opsForValue();
 		registry.addInterceptor(new SaRouteInterceptor((req, res, handler) -> {
 			SaRouter.match("/**", new SaParamFunction<SaRouterStaff>() {
 
